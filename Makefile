@@ -15,3 +15,4 @@ compile-asm:
 
 clean:
 	rm -f *.exe
+	rm -f *.asm
