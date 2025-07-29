@@ -19,8 +19,26 @@ int findIfKeyInArray(int *arr, int size, int key) {
     return 0;
 }
 
+void inputArray(int *arr, size_t size) {
+    for (size_t i = 0; i < size; i++) {
+        printf("Enter value #%d: ", i + 1);
+        scanf("%d", arr);
+        arr++;
+    }
+}
+
+void displayArray(int *arr, size_t size) {
+    for (size_t i = 0; i < size; i++) {
+        printf("Value #%d: %d\n", i + 1, *arr);
+        arr++;
+    }
+}
+
 int main() {
-    int grades[SIZE] = {3, 5, 7, 8};
+    int grades[SIZE];
+    inputArray(grades, SIZE);
+
+    displayArray(grades, SIZE);
 
     int summed = sumArray(grades, SIZE);
     printf("Sum = %d\n", summed);
