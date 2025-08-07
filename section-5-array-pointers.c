@@ -34,9 +34,13 @@ void displayArray(int *arr, size_t size) {
     }
 }
 
+int *createArray();
+
 int main() {
-    int grades[SIZE];
-    inputArray(grades, SIZE);
+    // int grades[SIZE];
+    // inputArray(grades, SIZE);
+
+    int *grades = createArray();
 
     displayArray(grades, SIZE);
 
@@ -47,4 +51,16 @@ int main() {
     printf("Key 60 in array: %d", isKeyInArray);
 
     return 0;
+}
+
+int *createArray() {
+    int myArr[SIZE];
+
+    printf("Enter %d size of elements.\n", SIZE);
+    for (size_t i = 0; i < SIZE; i++) {
+        printf("Enter %d element", i + 1);
+        scanf("%d", myArr + i);
+    }
+
+    return myArr;
 }
