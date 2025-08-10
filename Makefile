@@ -14,5 +14,5 @@ compile-asm:
 	gcc -S -masm=intel $(file) -o $(asm)
 
 clean:
-	rm -f *.exe
-	rm -f *.asm
+	rm -f **/*.exe
+	rm -f **/*.asm
