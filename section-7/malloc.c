@@ -11,5 +11,7 @@ int main() {
         printf("Allocation, Succeeded");
     }
 
-    ("Allocation Failed");
+    printf("Allocation Failed");
+
+    free(bArr);
 }
