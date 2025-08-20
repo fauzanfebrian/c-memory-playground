@@ -12,4 +12,5 @@ int main() {
     printf("First index: %d", *a);
 
     free(a);
+    a = NULL;  // disabling the dangling pointer
 }
