@@ -41,7 +41,7 @@ void handleDynamicArray(int **arr, size_t *dynamicSize, size_t currentSize, int 
 This handler function take 4 parameters:
 
 1. `int **arr`: A pointer to the dynamic array.
-2. `size_t *dynamicSize`: A pointer to the current size of the dynamic array.
+2. `size_t *dynamicSize`: The actual dynamic array, this to prevent memory overhead, the strategy of the reallocation.
 3. `size_t currentSize`: The current number of elements in the array or we can say the actual size of the user input
    array.
 4. `int newValue`: The new value to be added to the array.
