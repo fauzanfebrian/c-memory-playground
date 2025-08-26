@@ -26,3 +26,24 @@ void *memcpy(void *dest, const void *src, size_t n) {
 ```
 
 From this pseudocode, i've an idea to build my own memcpy too, so there are no external/built-in function that i used.
+And here's my own realloc implementation:
+
+```c
+void *myRealloc(void *srcBlock, size_t oldMemSize, size_t newMemSize) {
+    // allocate new memory
+    unsigned char *newBlock = malloc(newMemSize);
+    if (newBlock == NULL) {
+        return NULL;
+    }
+
+    for (size_t i = 0; i < oldMemSize && i < newMemSize; i++) {
+        newBlock[i] = ((unsigned char *)srcBlock)[i];
+    }
+
+    free(srcBlock);
+
+    return (void *)newBlock;
+}
+```
+
+This code can be accessed at `src/section-7/c3-realloc.c`.
