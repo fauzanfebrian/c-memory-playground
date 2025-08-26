@@ -16,22 +16,18 @@ return an array and pass it's size.
 ```c
 void handleDynamicArray(int **arr, size_t *dynamicSize, size_t currentSize, int newValue) {
     if (currentSize > *dynamicSize) {
-        *dynamicSize = (int)(currentSize * SIZE_MULTIPLIER);
-        if (*arr == NULL) {
-            int *newArr = malloc(*dynamicSize * sizeof(int));
-            if (!newArr) {
-                printf("Error memory");
-                return;
-            }
-            *arr = newArr;
+        if (*dynamicSize == 0) {
+            *dynamicSize = 4;
         } else {
-            int *newArr = realloc(*arr, *dynamicSize * sizeof(int));
-            if (!newArr) {
-                printf("Error memory");
-                return;
-            }
-            *arr = newArr;
+            *dynamicSize = (size_t)(*dynamicSize * SIZE_MULTIPLIER);
         }
+
+        int *newArr = realloc(*arr, *dynamicSize * sizeof(int));
+        if (!newArr) {
+            printf("Error allocating memory\n");
+            exit(1);
+        }
+        *arr = newArr;
     }
 
     (*arr)[currentSize - 1] = newValue;
@@ -46,8 +42,8 @@ This handler function take 4 parameters:
    array.
 4. `int newValue`: The new value to be added to the array.
 
-At code above, when dynamic array is still null then we need to allocate new memory using malloc, if it's not null then
-we need to reallocate the memory using realloc. After the memory handling then we add the new value to the array.
+At code above, we handle the dynamic array resizing and memory allocation. After the memory handling then we add the new
+value to the array.
 
 #### Limitation
 
@@ -60,7 +56,7 @@ void handleFreeMultiplier(int **arr, size_t actualSize) {
         *arr = NULL;
     }
 
-    int *newTemp = realloc(*arr, actualSize);
+    int *newTemp = realloc(*arr, actualSize * sizeof(int));
     if (newTemp) {
         *arr = newTemp;
     }

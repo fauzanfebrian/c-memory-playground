@@ -4,8 +4,8 @@
 #define SIZE_MULTIPLIER 1.5
 
 void printArr(int *ptr, size_t size) {
-    if (!size) {
-        printf("Array not itialized.");
+    if (ptr == NULL) {
+        printf("Array not initialized.");
         return;
     }
 
@@ -18,22 +18,18 @@ void printArr(int *ptr, size_t size) {
 
 void handleDynamicArray(int **arr, size_t *dynamicSize, size_t currentSize, int newValue) {
     if (currentSize > *dynamicSize) {
-        *dynamicSize = (int)(currentSize * SIZE_MULTIPLIER);
-        if (*arr == NULL) {
-            int *newArr = malloc(*dynamicSize * sizeof(int));
-            if (!newArr) {
-                printf("Error memory");
-                return;
-            }
-            *arr = newArr;
+        if (*dynamicSize == 0) {
+            *dynamicSize = 4;
         } else {
-            int *newArr = realloc(*arr, *dynamicSize * sizeof(int));
-            if (!newArr) {
-                printf("Error memory");
-                return;
-            }
-            *arr = newArr;
+            *dynamicSize = (size_t)(*dynamicSize * SIZE_MULTIPLIER);
         }
+
+        int *newArr = realloc(*arr, *dynamicSize * sizeof(int));
+        if (!newArr) {
+            printf("Error allocating memory\n");
+            exit(1);
+        }
+        *arr = newArr;
     }
 
     (*arr)[currentSize - 1] = newValue;
@@ -44,7 +40,7 @@ void handleFreeMultiplier(int **arr, size_t actualSize) {
         *arr = NULL;
     }
 
-    int *newTemp = realloc(*arr, actualSize);
+    int *newTemp = realloc(*arr, actualSize * sizeof(int));
     if (newTemp) {
         *arr = newTemp;
     }
