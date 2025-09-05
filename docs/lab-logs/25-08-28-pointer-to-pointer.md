@@ -11,4 +11,4 @@ programmer, to manage memory in a better way.
 
 ### File
 
-The file for this section can be found at `src/section-7/c5-pointer-to-pointer.c`.
+The file for this section can be found at [c5-pointer-to-pointer.c](../../src/section-7/c5-pointer-to-pointer.c).

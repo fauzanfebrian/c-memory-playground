@@ -65,4 +65,4 @@ void handleFreeMultiplier(int **arr, size_t actualSize) {
 
 ### File
 
-This code can be accessed and modified at `src/section-7/c4-dynamic-array.c`
+This code can be accessed and modified at [c4-dynamic-array.c](../../src/section-7/c4-dynamic-array.c)

@@ -46,4 +46,4 @@ void *myRealloc(void *srcBlock, size_t oldMemSize, size_t newMemSize) {
 }
 ```
 
-This code can be accessed at `src/section-7/c3-realloc.c`.
+This code can be accessed at [c3-realloc.c](../../src/section-7/c3-realloc.c).
