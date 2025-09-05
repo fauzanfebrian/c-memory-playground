@@ -55,6 +55,12 @@ if (i / elementSize == insertIndex) {
 This part is the key logic of inserting new value, check the index of loop, if the result of division is equal to the
 `insertIndex` then insert the new value, and continue to the next loop.
 
+### Alternative
+
+Actually there is more simpler way to do this, by using `memcpy` function from `string.h` library, just manipulating the
+size to copy. But for this challenge i want to do it manually, for deep understanding about memory allocation and
+manipulation.
+
 ### File
 
 [c4-insert-to-array-function.c](../../src/section-8/c4-insert-to-array-function.c)
