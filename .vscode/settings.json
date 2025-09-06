@@ -3,6 +3,7 @@
     "files.associations": {
         "*.embeddedhtml": "html",
         "*.ejs": "html",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "stdlib.h": "c"
     }
 }
