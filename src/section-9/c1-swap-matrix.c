@@ -10,24 +10,22 @@ void print2DDynamicMatrix(int **a, int rows, int columns) {
     }
 }
 
-void swapRows(int **a, int **b) {
-    if (a == b) {
+void swapRows(void **a, int row1, int row2) {
+    if (row1 == row2) {
         return;
     }
 
-    *a = (int *)((uintptr_t)(*a) ^ (uintptr_t)(*b));
-    *b = (int *)((uintptr_t)(*a) ^ (uintptr_t)(*b));
-    *a = (int *)((uintptr_t)(*a) ^ (uintptr_t)(*b));
+    a[row1] = (void *)((uintptr_t)(a[row1]) ^ (uintptr_t)(a[row2]));
+    a[row2] = (void *)((uintptr_t)(a[row1]) ^ (uintptr_t)(a[row2]));
+    a[row1] = (void *)((uintptr_t)(a[row1]) ^ (uintptr_t)(a[row2]));
 }
 
-void swapColumns(int *a, int *b) {
-    if (a == b) {
-        return;
+void swapColumns(int **a, size_t totalRows, int column1, int column2) {
+    for (size_t i = 0; i < totalRows; i++) {
+        a[i][column1] = a[i][column1] ^ a[i][column2];
+        a[i][column2] = a[i][column1] ^ a[i][column2];
+        a[i][column1] = a[i][column1] ^ a[i][column2];
     }
-
-    *a = *a ^ *b;
-    *b = *a ^ *b;
-    *a = *a ^ *b;
 }
 
 int main() {
@@ -39,12 +37,12 @@ int main() {
 
     print2DDynamicMatrix(matrix, 3, 5);
 
-    swapRows(&matrix[0], &matrix[2]);
+    swapRows((void *)matrix, 0, 2);
 
     printf("After swap rows:\n");
     print2DDynamicMatrix(matrix, 3, 5);
 
-    swapColumns(&matrix[0][0], &matrix[2][1]);
+    swapColumns(matrix, 3, 0, 2);
 
     printf("After swap columns:\n");
     print2DDynamicMatrix(matrix, 3, 5);

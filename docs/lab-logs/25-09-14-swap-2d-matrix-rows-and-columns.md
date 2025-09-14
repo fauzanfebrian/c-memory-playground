@@ -19,9 +19,9 @@ challenge myself to use the `XOR` method, but i can't do it regularly just like 
 pointer, then i asked to ChatGPT how do i swap a pointer, then he give me this code:
 
 ```c
-*a = (int *)((uintptr_t)(*a) ^ (uintptr_t)(*b));
-*b = (int *)((uintptr_t)(*a) ^ (uintptr_t)(*b));
-*a = (int *)((uintptr_t)(*a) ^ (uintptr_t)(*b));
+*a = (void *)((uintptr_t)(*a) ^ (uintptr_t)(*b));
+*b = (void *)((uintptr_t)(*a) ^ (uintptr_t)(*b));
+*a = (void *)((uintptr_t)(*a) ^ (uintptr_t)(*b));
 ```
 
 It turns out i should cast the pointer to `uintptr_t` first, then do the `XOR` operation, and then cast it back to the
