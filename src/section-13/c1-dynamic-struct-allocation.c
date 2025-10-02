@@ -7,8 +7,8 @@ typedef struct employee {
     int id;
 } Employee;
 
-Employee *createEmployees(int *size) {
-    Employee *employeesArray;
+Employee* createEmployees(int* size) {
+    Employee* employeesArray;
 
     printf("Enter the total number of employees: ");
     scanf("%d", size);
@@ -18,7 +18,7 @@ Employee *createEmployees(int *size) {
     return employeesArray;
 }
 
-void updateEmployees(Employee *arr, int size) {
+void updateEmployees(Employee* arr, int size) {
     for (size_t i = 0; i < size; i++) {
         arr[i].id = i + 1;
 
@@ -29,14 +29,18 @@ void updateEmployees(Employee *arr, int size) {
     }
 }
 
+void printEmployees(Employee* arr, int totalEmployees) {
+    for (size_t i = 0; i < totalEmployees; i++) {
+        printf("#%d. Name: %s, Age: %.2f\n", arr[i].age, arr[i].name, arr[i].age);
+    }
+}
+
 int main() {
     int totalEmployees;
 
-    Employee *employeesArr = createEmployees(&totalEmployees);
+    Employee* employeesArr = createEmployees(&totalEmployees);
 
     updateEmployees(employeesArr, totalEmployees);
 
-    for (size_t i = 0; i < totalEmployees; i++) {
-        printf("#%d. Name: %s, Age: %.2f\n", employeesArr[i].age, employeesArr[i].name, employeesArr[i].age);
-    }
+    printEmployees(employeesArr, totalEmployees);
 }
