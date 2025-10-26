@@ -1,2 +1,7 @@
+# Typical C debug build outputs
+a.out
+*.o
+*.out
 *.exe
-*.asm
+
+**/build/
