@@ -3,5 +3,6 @@ a.out
 *.o
 *.out
 *.exe
+*.bin
 
 **/build/
